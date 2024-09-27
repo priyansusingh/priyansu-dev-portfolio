@@ -45,7 +45,7 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            John Doe
+            Priyansu Singh
           </motion.h1>
           <motion.div
             className="text-2xl md:text-3xl mb-4 text-gray-300 font-semibold"
