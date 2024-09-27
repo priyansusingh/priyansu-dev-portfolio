@@ -4,11 +4,13 @@ import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import avatar from '../avatar.jpg'
 
 export default function HeroSection() {
   return (
-    <section className="flex justify-center items-center min-h-screen px-4 py-20">
+    <section className="flex justify-center items-center min-h-screen px-4 py-20 pt-32">
       <motion.div 
         className="rounded-3xl p-12 md:p-16 flex flex-col md:flex-row items-center max-w-5xl w-full"
         initial={{ opacity: 0, scale: 0.9 }}
@@ -29,14 +31,28 @@ export default function HeroSection() {
         >
           <div className="relative w-64 h-64 md:w-80 md:h-80">
             <Image
-              src= {avatar}
+              src={avatar}
               alt="Developer's portrait"
               layout="fill"
               objectFit="cover"
               className="rounded-3xl border-4 border-indigo-500"
             />
           </div>
+          
+          {/* Social Icons Below Avatar */}
+          <div className="flex justify-center mt-4 space-x-6">
+            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-indigo-500 hover:text-indigo-700 transition">
+              <FontAwesomeIcon icon={faGithub} size="2x" />
+            </a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="text-indigo-500 hover:text-indigo-700 transition">
+              <FontAwesomeIcon icon={faLinkedin} size="2x" />
+            </a>
+            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-indigo-500 hover:text-indigo-700 transition">
+              <FontAwesomeIcon icon={faTwitter} size="2x" />
+            </a>
+          </div>
         </motion.div>
+        
         <div className="text-center md:text-left">
           <motion.h1
             className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-indigo-400 via-purple-400 to-teal-400 text-transparent bg-clip-text font-extrabold"

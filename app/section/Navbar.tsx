@@ -27,14 +27,28 @@ const NavItem = ({ href, text }: { href: string; text: string }) => {
   )
 }
 
+const ResumeButton = () => {
+  return (
+    <Link href="/resume.pdf" target="_blank">
+      <motion.button
+        className="px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-full hover:from-indigo-500 hover:to-purple-500 transition-all"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        CV
+      </motion.button>
+    </Link>
+  )
+}
+
 export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 pt-6 flex justify-center">
-      <nav className="bg-gray-900 bg-opacity-30 backdrop-blur-sm rounded-full px-8 py-3 min-w-[400px]">
-        <div className="flex items-center justify-center space-x-8">
+      <nav className="bg-white bg-opacity-5 backdrop-blur-lg shadow-lg rounded-xl px-16 py-6 min-w-[600px] max-w-[1200px]">
+        <div className="flex items-center justify-center space-x-12">
           <NavItem href="#skills" text="Skills" />
           <NavItem href="#projects" text="Projects" />
-          <NavItem href="#cv" text="CV" />
+          <ResumeButton />
         </div>
       </nav>
     </header>
