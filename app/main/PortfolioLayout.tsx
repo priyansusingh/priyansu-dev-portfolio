@@ -1,6 +1,7 @@
 import PortfolioBackground from "../components/PortfolioBackground";
 import HeroSection from "../section/Hero";
 import Navbar from "../section/Navbar";
+import SkillsSection from "../section/Skills";
 
 export function PortfolioLayout() {
   return (
@@ -9,6 +10,7 @@ export function PortfolioLayout() {
       <div className="relative z-10">
         <Navbar />
         <HeroSection/>
+        <SkillsSection/>
       </div>
     </div>
   )
