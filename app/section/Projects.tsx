@@ -86,7 +86,7 @@ export default function ProjectSection() {
             <Image src={project5} alt='' className="w-full h-48 object-cover" />
             <div className="p-4">
               <h3 className="text-xl font-semibold text-teal-300">Agrilink</h3>
-              <p className="mt-2 text-gray-300">It is Contract based farming website which i made suring Smart India hackathon 2024, It was a team work</p>
+              <p className="mt-2 text-gray-300">It is Contract based farming website which i made during Smart India hackathon 2024, It was a team work</p>
               <div className="flex justify-between mt-4">
                 <a href="https://agri-link-farming.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-300">
                   <FaLink className="text-xl" />
