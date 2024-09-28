@@ -10,10 +10,14 @@ export function PortfolioLayout() {
       <PortfolioBackground />
       <div className="relative z-10">
         <Navbar />
-        <HeroSection/>
-        <SkillsSection/>
-        <ProjectSection/>
+        <HeroSection />
+        <section id="skills" className="py-20"> {/* Skills Section */}
+          <SkillsSection />
+        </section>
+        <section id="projects" className="py-20"> {/* Projects Section */}
+          <ProjectSection />
+        </section>
       </div>
     </div>
-  )
+  );
 }

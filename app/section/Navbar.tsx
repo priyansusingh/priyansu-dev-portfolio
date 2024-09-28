@@ -1,8 +1,8 @@
 "use client"
 
-import React from 'react'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
+import React from 'react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const NavItem = ({ href, text }: { href: string; text: string }) => {
   return (
@@ -29,7 +29,7 @@ const NavItem = ({ href, text }: { href: string; text: string }) => {
 
 const ResumeButton = () => {
   return (
-    <Link href="/resume.pdf" target="_blank">
+    <Link href="https://drive.google.com/file/d/1FrrWLngxFYtl4XGYTWFhSo46eESwLN1D/view" target="_blank">
       <motion.button
         className="px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-full hover:from-indigo-500 hover:to-purple-500 transition-all"
         whileHover={{ scale: 1.05 }}
