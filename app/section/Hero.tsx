@@ -10,7 +10,7 @@ import avatar from '../avatar.jpg'
 
 export default function HeroSection() {
   return (
-    <section className="flex justify-center items-center min-h-screen px-4 py-20 pt-32">
+    <section className="flex justify-center items-center min-h-screen px-2 py-20 pt-32">
       <motion.div 
         className="rounded-3xl p-12 md:p-16 flex flex-col md:flex-row items-center max-w-5xl w-full"
         initial={{ opacity: 0, scale: 0.9 }}
@@ -41,13 +41,13 @@ export default function HeroSection() {
           
           {/* Social Icons Below Avatar */}
           <div className="flex justify-center mt-4 space-x-6">
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-indigo-500 hover:text-indigo-700 transition">
+            <a href="https://github.com/priyansusingh" target="_blank" rel="noopener noreferrer" className="text-indigo-500 hover:text-indigo-700 transition">
               <FontAwesomeIcon icon={faGithub} size="2x" />
             </a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="text-indigo-500 hover:text-indigo-700 transition">
+            <a href="https://www.linkedin.com/in/priyansusingh/" target="_blank" rel="noopener noreferrer" className="text-indigo-500 hover:text-indigo-700 transition">
               <FontAwesomeIcon icon={faLinkedin} size="2x" />
             </a>
-            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-indigo-500 hover:text-indigo-700 transition">
+            <a href="https://x.com/priyansu__singh" target="_blank" rel="noopener noreferrer" className="text-indigo-500 hover:text-indigo-700 transition">
               <FontAwesomeIcon icon={faTwitter} size="2x" />
             </a>
           </div>

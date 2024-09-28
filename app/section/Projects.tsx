@@ -12,7 +12,7 @@ import project5 from '../project5.png'
 
 export default function ProjectSection() {
   return (
-    <section className="py-20 text-white">
+    <section className="py-15 text-white">
       <h2 className="text-4xl text-center mb-10">My Projects</h2>
       <div className="flex flex-wrap justify-center gap-8">
     

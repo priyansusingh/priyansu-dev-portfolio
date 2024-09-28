@@ -46,6 +46,7 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 pt-6 flex justify-center">
       <nav className="bg-white bg-opacity-5 backdrop-blur-lg shadow-lg rounded-xl px-16 py-6 min-w-[600px] max-w-[1200px]">
         <div className="flex items-center justify-center space-x-12">
+          <NavItem href="./" text="./" /> {/* Root section */}
           <NavItem href="#skills" text="Skills" />
           <NavItem href="#projects" text="Projects" />
           <ResumeButton />
