@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Playfair_Display, Poppins } from 'next/font/google'
+import CustomCursor from "./components/CustomCursor";
 
 const playfair = Playfair_Display({ subsets: ['latin'] })
 const poppins = Poppins({ weight: ['300', '400', '600'], subsets: ['latin'] })
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body
         className={`${playfair.className} ${poppins.className}`}
       >
+        <CustomCursor/>
         {children}
       </body>
     </html>
