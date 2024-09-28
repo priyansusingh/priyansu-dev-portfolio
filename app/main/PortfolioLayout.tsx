@@ -1,4 +1,5 @@
 import PortfolioBackground from "../components/PortfolioBackground";
+import Footer from "../section/Footer";
 import HeroSection from "../section/Hero";
 import Navbar from "../section/Navbar";
 import ProjectSection from "../section/Projects";
@@ -16,6 +17,9 @@ export function PortfolioLayout() {
         </section>
         <section id="projects" className="py-20"> {/* Projects Section */}
           <ProjectSection />
+        </section>
+        <section>
+          <Footer/>
         </section>
       </div>
     </div>

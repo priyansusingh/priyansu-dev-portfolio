@@ -30,7 +30,7 @@ const skills = [
 export default function SkillsSection() {
   return (
     <section className="px-4 pt-5 pb-10 text-white"> {/* Increased padding left and right */}
-      <h2 className="text-4xl text-center mb-10">My Skills</h2>
+      <h2 className="text-4xl text-center mb-10 text-teal-300">My Skills</h2>
       <div className="flex flex-wrap justify-center gap-6">
         {skills.map((skill, index) => (
           <div key={index} className="flex flex-col items-center p-4 bg-gray-800 rounded-lg shadow-lg transition-transform transform hover:scale-105">
