@@ -1,35 +1,41 @@
 "use client"
 
 import React from 'react';
-import { FaReact, FaNodeJs, FaDatabase, FaHtml5, FaCss3Alt, FaDocker, FaLinux, FaGit, FaGithub, FaCode, FaPlus } from 'react-icons/fa'; // Import FaPlus
-import { SiJavascript, SiTypescript, SiTailwindcss, SiPostgresql, SiPrisma } from 'react-icons/si';
-import { GrNext } from 'react-icons/gr'; // Next.js icon
+import { FaReact, FaNodeJs, FaDatabase, FaHtml5, FaCss3Alt, FaDocker, FaGithub, FaCode, FaPlus } from 'react-icons/fa';
+import { SiJavascript, SiTypescript, SiTailwindcss, SiPostgresql, SiPrisma, SiNextdotjs, SiExpress, SiLinux, SiGit } from 'react-icons/si';
 
 const skills = [
-    { name: 'JavaScript', icon: <SiJavascript className="text-2xl text-yellow-500" /> },
-    { name: 'TypeScript', icon: <SiTypescript className="text-2xl text-blue-600" /> },
-    { name: 'Next.js', icon: <GrNext className="text-2xl text-black" /> }, // Next.js icon
-    { name: 'React.js', icon: <FaReact className="text-2xl text-cyan-500" /> },
-    { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-2xl text-sky-400" /> },
-    { name: 'PostgreSQL', icon: <SiPostgresql className="text-2xl text-blue-700" /> },
-    { name: 'Prisma', icon: <SiPrisma className="text-2xl text-purple-500" /> }, // Prisma icon with color
-    { name: 'MongoDB', icon: <FaDatabase className="text-2xl text-green-500" /> }, // MongoDB icon
-    { name: 'Node.js', icon: <FaNodeJs className="text-2xl text-green-500" /> },
-    { name: 'Express.js', icon: <FaNodeJs className="text-2xl text-gray-600" /> }, // Use Node.js for Express.js
-    { name: 'Java', icon: <FaCode className="text-2xl text-blue-600" /> }, // Placeholder for Java icon
-    { name: 'C++', icon: <FaCode className="text-2xl text-blue-600" /> }, // Placeholder for C++ icon
-    { name: 'Docker', icon: <FaDocker className="text-2xl text-blue-600" /> }, // Docker icon
-    { name: 'Linux', icon: <FaLinux className="text-2xl text-black" /> }, // Linux icon
-    { name: 'Git', icon: <FaGit className="text-2xl text-black" /> }, // Git icon
-    { name: 'GitHub', icon: <FaGithub className="text-2xl text-black" /> }, // GitHub icon
-    { name: 'HTML', icon: <FaHtml5 className="text-2xl text-orange-500" /> },
-    { name: 'CSS', icon: <FaCss3Alt className="text-2xl text-blue-500" /> },
-  { name: '& more', icon: <FaPlus className="text-2xl text-red-500" /> }, // Added & more icon
+  // Programming Languages
+  { name: 'JavaScript', icon: <SiJavascript className="text-2xl text-yellow-500" /> },
+  { name: 'TypeScript', icon: <SiTypescript className="text-2xl text-blue-600" /> },
+  { name: 'Next.js', icon: <SiNextdotjs className="text-2xl text-white" /> },
+  { name: 'React.js', icon: <FaReact className="text-2xl text-cyan-500" /> },
+  { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-2xl text-sky-400" /> },
+  { name: 'Java', icon: <FaCode className="text-2xl text-blue-600" /> },
+  { name: 'C++', icon: <FaCode className="text-2xl text-blue-600" /> },
+  
+  // Frameworks
+
+  // Backend and Databases
+  { name: 'Node.js', icon: <FaNodeJs className="text-2xl text-green-500" /> },
+  { name: 'Express.js', icon: <SiExpress className="text-2xl text-white" /> },
+  { name: 'PostgreSQL', icon: <SiPostgresql className="text-2xl text-blue-700" /> },
+  { name: 'Prisma', icon: <SiPrisma className="text-2xl text-purple-500" /> },
+  { name: 'MongoDB', icon: <FaDatabase className="text-2xl text-green-500" /> },
+
+  // Other Technologies
+  { name: 'Linux', icon: <SiLinux className="text-2xl text-yellow-500" /> },
+  { name: 'Git', icon: <SiGit className="text-2xl text-orange-500" /> },
+  { name: 'Docker', icon: <FaDocker className="text-2xl text-blue-600" /> },
+  { name: 'GitHub', icon: <FaGithub className="text-2xl text-black" /> },
+  { name: 'HTML', icon: <FaHtml5 className="text-2xl text-orange-500" /> },
+  { name: 'CSS', icon: <FaCss3Alt className="text-2xl text-blue-500" /> },
+  { name: '& more', icon: <FaPlus className="text-2xl text-red-500" /> },
 ];
 
 export default function SkillsSection() {
   return (
-    <section className="px-4 pt-5 pb-10 text-white"> {/* Increased padding left and right */}
+    <section className="px-4 pt-5 pb-10 text-white">
       <h2 className="text-4xl text-center mb-10 text-teal-300">My Skills</h2>
       <div className="flex flex-wrap justify-center gap-6">
         {skills.map((skill, index) => (
