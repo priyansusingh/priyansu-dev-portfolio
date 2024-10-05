@@ -10,7 +10,7 @@ import avatar from '../avatar.jpg'
 
 export default function HeroSection() {
   return (
-    <section className="flex justify-center items-center min-h-screen px-4 pt-24 pb-12"> {/* Reduced bottom padding */}
+    <section id="root" className="flex justify-center items-center min-h-screen px-4 pt-24 pb-12"> {/* Reduced bottom padding */}
       <motion.div 
         className="rounded-3xl p-12 md:p-20 flex flex-col md:flex-row items-center max-w-6xl w-full space-y-12 md:space-y-0 md:space-x-16"
         initial={{ opacity: 0, scale: 0.9 }}
@@ -104,9 +104,11 @@ export default function HeroSection() {
           >
             <h2 className="text-2xl font-bold mb-4 text-indigo-400">About Me</h2>
             <p className="text-gray-300 leading-relaxed">
-              Passionate about creating innovative web solutions and exploring the latest in technology. 
-              With a strong foundation in full-stack development and a keen interest in DevOps, 
-              I&apos;m always eager to take on new challenges and push the boundaries of what&apos;s possible in tech.
+            I am a passionate and dedicated 3rd-year B.Tech Computer Science Engineering student with over a year of experience as a full-stack
+            web developer. My expertise spans both front-end and back-end technologies, enabling me to build robust and efficient web
+            applications. I am also a DevOps enthusiast, constantly seeking to improve deployment processes and system reliability. With a strong
+            commitment to learning and staying current with industry trends, I thrive in dynamic environments where I can contribute to
+            innovative projects and collaborate with like-minded individuals.
             </p>
           </motion.div>
         </div>

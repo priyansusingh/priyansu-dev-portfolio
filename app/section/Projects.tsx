@@ -24,7 +24,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, liveLink, githubLink, techStack }) => {
   return (
     <div className="w-80 bg-white bg-opacity-10 border border-gray-700 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-      <Image src={image} alt={title} className="w-full h-48 object-cover" />
+      <Image src={image} alt={title} className="w-30 h-40 object-cover" />
       <div className="p-4">
         <h3 className="text-xl font-semibold text-teal-300">{title}</h3>
         <p className="mt-2 text-gray-300">{description}</p>
@@ -55,17 +55,9 @@ export default function ProjectSection() {
       title: "Writely",
       description: "A blogging platform for users to create and read blogs.",
       image: project1,
-      liveLink: "https://writely-one.vercel.app",
+      liveLink: "https://writely-one.vercel.app/",
       githubLink: "https://github.com/priyansusingh/Writely",
       techStack: [<SiTypescript key="js" />, <SiReact key="react" />, <SiTailwindcss key="tailwind" />,<SiPostgresql key="postgres" />],
-    },
-    {
-      title: "Payment Application",
-      description: "An app designed for efficient payment management and processing.",
-      image: project2,
-      liveLink: "https://payments-app-iota.vercel.app/",
-      githubLink: "https://github.com/priyansusingh/payments-application",
-      techStack: [<SiJavascript key="js" />, <SiReact key="react" />, <SiNodedotjs key="node" />, <SiMongodb key="mongo"/>, <SiExpress key="express"/>],
     },
     {
       title: "Portfolio Website",
@@ -74,6 +66,14 @@ export default function ProjectSection() {
       liveLink: "https://priyansu-dev.vercel.app/",
       githubLink: "https://github.com/priyansusingh/priyansu-dev-portfolio",
       techStack: [<SiTypescript key="ts" />, <SiNextdotjs key="nextjs"/> ,<SiReact key="react" />, <SiTailwindcss key="tailwind" />],
+    },
+    {
+      title: "Payment Application",
+      description: "An app designed for efficient payment management and processing.",
+      image: project2,
+      liveLink: "https://payments-app-iota.vercel.app/",
+      githubLink: "https://github.com/priyansusingh/payments-application",
+      techStack: [<SiJavascript key="js" />, <SiReact key="react" />, <SiNodedotjs key="node" />, <SiMongodb key="mongo"/>, <SiExpress key="express"/>],
     },
     {
       title: "Fantune",
@@ -94,7 +94,7 @@ export default function ProjectSection() {
   ];
 
   return (
-    <section className="py-15 text-white">
+    <section  id="projects" className="py-15 text-white">
       <h2 className="text-4xl text-center mb-10 text-teal-300">My Projects</h2>
       <div className="flex flex-wrap justify-center gap-8">
         {projects.map((project, index) => (
