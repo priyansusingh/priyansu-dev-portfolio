@@ -1,26 +1,25 @@
-"use client"
+"use client";
 
 import React, { useRef, useEffect } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 
-// Particle Component with different shapes and animations
-const Particle = ({ index }: { index: number }) => {
+// Star Component with animations
+const Star = ({ index }: { index: number }) => {
   const controls = useAnimation();
-
+console.log(index)
   useEffect(() => {
     controls.start({
-      y: [0, Math.random() * -150, 0],
-      x: [0, Math.random() * 150 - 75, 0],
+      opacity: [0.5, 1, 0.5],
       transition: {
-        duration: 15 + Math.random() * 10,
+        duration: 1 + Math.random(),
         repeat: Infinity,
         repeatType: "reverse" as const,
       },
     });
   }, [controls]);
 
-  const size = Math.random() * 8 + 4; // Adjust size range
-  const color = `hsl(${Math.random() * 360}, 100%, 50%)`; // Random color
+  const size = Math.random() * 3 + 2; // Adjust size range for stars
+  const color = `hsl(${Math.random() * 360}, 100%, 100%)`; // Random white color for stars
 
   return (
     <motion.div
@@ -28,10 +27,41 @@ const Particle = ({ index }: { index: number }) => {
       style={{
         width: `${size}px`,
         height: `${size}px`,
-        left: `${index * 3}%`,
-        top: `${Math.random() * 100}%`,
-        opacity: Math.random() * 0.4 + 0.2,
+        left: `${Math.random() * 100}%`, // Random horizontal position
+        top: `${Math.random() * 100}%`, // Random vertical position
         backgroundColor: color,
+        filter: 'blur(2px)', // Blur effect for twinkling stars
+      }}
+      animate={controls}
+    />
+  );
+}
+
+// Meteorite Component with animation
+const Meteorite = () => {
+  const controls = useAnimation();
+
+  useEffect(() => {
+    const duration = Math.random() * 2 + 3; // Random duration for each meteorite
+    controls.start({
+      x: ["-100%", "100%"], // Move from left to right
+      y: ["50%", "0%"], // Move diagonally downwards
+      opacity: [1, 0],
+      transition: {
+        duration,
+        ease: "linear",
+        repeat: Infinity,
+      },
+    });
+  }, [controls]);
+
+  return (
+    <motion.div
+      className="absolute rounded-full bg-gray-300"
+      style={{
+        width: `${Math.random() * 5 + 2}px`, // Random size for meteorites
+        height: '2px', // Fixed height for meteorite streak
+        filter: 'blur(1px)',
       }}
       animate={controls}
     />
@@ -43,49 +73,51 @@ export default function PortfolioBackground() {
   const isInView = useInView(ref);
 
   return (
-    <div className="fixed inset-0 overflow-hidden bg-gradient-to-br from-gray-900 via-indigo-950 to-purple-950" ref={ref}>
-      {/* Grid pattern */}
-      <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:50px_50px]" />
+    <div className="fixed inset-0 overflow-hidden bg-black" ref={ref}>
+      {/* Dark space background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black to-gray-800" />
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-indigo-900/20 via-purple-900/20 to-teal-900/20" />
-
-      {/* Particles with different shapes */}
-      {Array.from({ length: 40 }).map((_, index) => (
-        <Particle key={index} index={index} />
+      {/* Glowing stars */}
+      {Array.from({ length: 50 }).map((_, index) => (
+        <Star key={index} index={index} />
       ))}
 
-      {/* Animated glow */}
+      {/* Meteorites */}
+      {Array.from({ length: 10 }).map((_, index) => (
+        <Meteorite key={index} />
+      ))}
+
+      {/* Animated glow to simulate nebulas */}
       <motion.div
-        className="absolute inset-0 bg-gradient-radial from-teal-500/10 via-purple-500/10 to-transparent"
+        className="absolute inset-0 bg-gradient-radial from-purple-500/20 via-blue-500/20 to-transparent"
         initial={{ opacity: 0 }}
-        animate={{ opacity: isInView ? 1 : 0 }}
-        transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
+        animate={{ opacity: isInView ? 0.3 : 0 }}
+        transition={{ duration: 5, repeat: Infinity, repeatType: "reverse" }}
       />
 
-      {/* Floating shapes with complex animations */}
+      {/* Floating nebula shapes */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-40 h-40 bg-gradient-to-br from-indigo-700/30 to-purple-700/30 rounded-full blur-xl"
+        className="absolute top-1/4 left-1/4 w-60 h-60 bg-gradient-to-br from-purple-600/30 to-blue-600/30 rounded-full blur-2xl"
         animate={{
-          scale: [1, 1.5, 1],
-          rotate: [0, 180, 0],
+          scale: [1, 1.2, 1],
+          rotate: [0, 360, 0],
           opacity: [0.5, 1, 0.5],
         }}
         transition={{
-          duration: 30,
+          duration: 15,
           repeat: Infinity,
           repeatType: "reverse",
         }}
       />
       <motion.div
-        className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gradient-to-tr from-purple-700/30 to-teal-700/30 rounded-lg blur-xl"
+        className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-gradient-to-tr from-pink-600/30 to-purple-600/30 rounded-lg blur-2xl"
         animate={{
           scale: [1, 1.3, 1],
-          rotate: [0, -90, 0],
+          rotate: [0, -360, 0],
           opacity: [0.3, 0.8, 0.3],
         }}
         transition={{
-          duration: 25,
+          duration: 20,
           repeat: Infinity,
           repeatType: "reverse",
         }}

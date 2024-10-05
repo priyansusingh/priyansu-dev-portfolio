@@ -52,11 +52,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, li
 export default function ProjectSection() {
   const projects = [
     {
-      title: "Digital Dairy",
+      title: "Writely",
       description: "A blogging platform for users to create and read blogs.",
       image: project1,
-      liveLink: "https://digital-dairy-one.vercel.app",
-      githubLink: "https://github.com/priyansusingh/Digital-Dairy",
+      liveLink: "https://writely-one.vercel.app",
+      githubLink: "https://github.com/priyansusingh/Writely",
       techStack: [<SiTypescript key="js" />, <SiReact key="react" />, <SiTailwindcss key="tailwind" />,<SiPostgresql key="postgres" />],
     },
     {
