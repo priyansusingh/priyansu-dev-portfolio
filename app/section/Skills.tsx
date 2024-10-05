@@ -6,8 +6,8 @@ import { SiJavascript, SiTypescript, SiTailwindcss, SiPostgresql, SiPrisma, SiNe
 
 const skills = [
   // Programming Languages
-  { name: 'JavaScript', icon: <SiJavascript className="text-2xl text-yellow-500" /> },
   { name: 'TypeScript', icon: <SiTypescript className="text-2xl text-blue-600" /> },
+  { name: 'JavaScript', icon: <SiJavascript className="text-2xl text-yellow-500" /> },
   { name: 'Next.js', icon: <SiNextdotjs className="text-2xl text-white" /> },
   { name: 'React.js', icon: <FaReact className="text-2xl text-cyan-500" /> },
   { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-2xl text-sky-400" /> },
