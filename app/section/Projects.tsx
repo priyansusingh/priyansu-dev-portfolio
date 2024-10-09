@@ -79,7 +79,7 @@ export default function ProjectSection() {
       title: "Fantune",
       description: "It is a SaaS music streaming platform where you can choose your favorite stream.",
       image: project4,
-      liveLink: "https://saas-2ezrdnuhv-priyansu-singhs-projects.vercel.app/",
+      liveLink: "https://saas-app-zeta.vercel.app/",
       githubLink: "https://github.com/priyansusingh/Fantune",
       techStack: [<SiTypescript key="ts" />, <SiNextdotjs key="nextjs"/> ,<SiReact key="react" />, <SiPostgresql key="postgres" />],
     },
