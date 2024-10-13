@@ -1,26 +1,33 @@
-"use client";
+"use client"
 
-import React from 'react';
-import { FaLink, FaGithub } from 'react-icons/fa';
-import { SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiPostgresql, SiTailwindcss, SiMongodb, SiExpress, SiNextdotjs } from 'react-icons/si';
-import Image, { StaticImageData } from 'next/image';
-import project1 from '../../public/project1.png';
-import project2 from '../../public/project2.png';
-import project3 from '../../public/project3.png';
+import React from 'react'
+import { FaLink, FaGithub } from 'react-icons/fa'
+import { SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiPostgresql, SiTailwindcss, SiMongodb, SiExpress, SiNextdotjs } from 'react-icons/si'
+import Image, { StaticImageData } from 'next/image'
+import project1 from '../../public/project1.png'
+import project2 from '../../public/project2.png'
+import project3 from '../../public/project3.png'
 
 interface ProjectCardProps {
-  title: string;
-  description: string;
-  image: StaticImageData;
-  liveLink: string;
-  githubLink: string;
-  techStack: JSX.Element[]; 
+  title: string
+  description: string
+  image: StaticImageData
+  liveLink: string
+  githubLink: string
+  techStack: JSX.Element[]
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, liveLink, githubLink, techStack }) => {
   return (
     <div className="w-80 bg-white bg-opacity-10 border border-gray-700 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-      <Image src={image} alt={title} className="w-30 h-40 object-cover" />
+      <div className="relative w-full h-48 bg-gray-200 rounded-t-lg overflow-hidden">
+        <div className="absolute inset-0 bg-gray-800 rounded-t-lg">
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-20 h-3 bg-gray-700 rounded-b-lg"></div>
+        </div>
+        <div className="absolute inset-2 overflow-hidden rounded-t-lg">
+          <Image src={image} alt={title} layout="fill" objectFit="cover" className="rounded-t-lg" />
+        </div>
+      </div>
       <div className="p-4">
         <h3 className="text-xl font-semibold text-teal-300">{title}</h3>
         <p className="mt-2 text-gray-300">{description}</p>
@@ -41,9 +48,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, li
         </div>
       </div>
     </div>
-  );
-};
-
+  )
+}
 
 export default function ProjectSection() {
   const projects = [
@@ -53,7 +59,7 @@ export default function ProjectSection() {
       image: project1,
       liveLink: "https://writely-one.vercel.app/",
       githubLink: "https://github.com/priyansusingh/Writely",
-      techStack: [<SiTypescript key="js" />, <SiReact key="react" />, <SiTailwindcss key="tailwind" />,<SiPostgresql key="postgres" />],
+      techStack: [<SiTypescript key="js" />, <SiReact key="react" />, <SiTailwindcss key="tailwind" />, <SiPostgresql key="postgres" />],
     },
     {
       title: "Portfolio Website",
@@ -61,7 +67,7 @@ export default function ProjectSection() {
       image: project3,
       liveLink: "https://priyansu-dev.vercel.app/",
       githubLink: "https://github.com/priyansusingh/priyansu-dev-portfolio",
-      techStack: [<SiTypescript key="ts" />, <SiNextdotjs key="nextjs"/> ,<SiReact key="react" />, <SiTailwindcss key="tailwind" />],
+      techStack: [<SiTypescript key="ts" />, <SiNextdotjs key="nextjs" />, <SiReact key="react" />, <SiTailwindcss key="tailwind" />],
     },
     {
       title: "Payment Application",
@@ -69,12 +75,12 @@ export default function ProjectSection() {
       image: project2,
       liveLink: "https://payments-app-iota.vercel.app/",
       githubLink: "https://github.com/priyansusingh/payments-application",
-      techStack: [<SiJavascript key="js" />, <SiReact key="react" />, <SiNodedotjs key="node" />, <SiMongodb key="mongo"/>, <SiExpress key="express"/>],
+      techStack: [<SiJavascript key="js" />, <SiReact key="react" />, <SiNodedotjs key="node" />, <SiMongodb key="mongo" />, <SiExpress key="express" />],
     },
-  ];
+  ]
 
   return (
-    <section  id="projects" className="py-15 text-white">
+    <section id="projects" className="py-15 text-white">
       <h2 className="text-4xl text-center mb-10 text-teal-300">My Projects</h2>
       <div className="flex flex-wrap justify-center gap-8">
         {projects.map((project, index) => (
@@ -90,5 +96,5 @@ export default function ProjectSection() {
         ))}
       </div>
     </section>
-  );
+  )
 }

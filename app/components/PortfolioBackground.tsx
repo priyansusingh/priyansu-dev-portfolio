@@ -1,127 +1,188 @@
-"use client";
+"use client"
 
-import React, { useRef, useEffect } from 'react';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import React, { useEffect, useState } from 'react'
+import { motion, useAnimation } from 'framer-motion'
 
-// Star Component with animations
-const Star = ({ index }: { index: number }) => {
-  const controls = useAnimation();
-console.log(index)
+const Star = ({ x, y, size }: { x: number; y: number; size: number }) => (
+  <motion.div
+    className="absolute rounded-full bg-white"
+    style={{ x, y, width: size, height: size }}
+    animate={{
+      opacity: [0.2, 1, 0.2],
+      scale: [1, 1.2, 1],
+    }}
+    transition={{
+      duration: 3 + Math.random() * 2,
+      repeat: Infinity,
+      repeatType: "reverse",
+    }}
+  />
+)
+
+const Constellation = () => {
+  const points = [
+    { x: 50, y: 50 },
+    { x: 100, y: 100 },
+    { x: 150, y: 75 },
+    { x: 200, y: 150 },
+    { x: 250, y: 50 },
+  ]
+
+  return (
+    <motion.svg
+      className="absolute inset-0 w-full h-full"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 2 }}
+    >
+      {points.map((point, index) => (
+        <motion.circle
+          key={index}
+          cx={point.x}
+          cy={point.y}
+          r="2"
+          fill="white"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0.2, 1, 0.2] }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            repeatType: "reverse",
+            delay: index * 0.5,
+          }}
+        />
+      ))}
+      {points.slice(0, -1).map((point, index) => (
+        <motion.line
+          key={index}
+          x1={point.x}
+          y1={point.y}
+          x2={points[index + 1].x}
+          y2={points[index + 1].y}
+          stroke="white"
+          strokeWidth="0.5"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: [0, 1, 0] }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            repeatType: "reverse",
+            delay: index * 1,
+          }}
+        />
+      ))}
+    </motion.svg>
+  )
+}
+
+const ShootingStar = () => {
+  const controls = useAnimation()
+
   useEffect(() => {
-    controls.start({
-      opacity: [0.5, 1, 0.5],
-      transition: {
-        duration: 1 + Math.random(),
-        repeat: Infinity,
-        repeatType: "reverse" as const,
-      },
-    });
-  }, [controls]);
-
-  const size = Math.random() * 3 + 2; // Adjust size range for stars
-  const color = `hsl(${Math.random() * 360}, 100%, 100%)`; // Random white color for stars
+    const animate = async () => {
+      await controls.start({
+        x: ["0%", "100%"],
+        y: ["0%", "100%"],
+        opacity: [0, 1, 0],
+        transition: { duration: 1, ease: "easeInOut" },
+      })
+      controls.set({ x: "0%", y: "0%" })
+      setTimeout(animate, Math.random() * 10000 + 5000)
+    }
+    animate()
+  }, [controls])
 
   return (
     <motion.div
-      className="absolute rounded-full"
-      style={{
-        width: `${size}px`,
-        height: `${size}px`,
-        left: `${Math.random() * 100}%`, // Random horizontal position
-        top: `${Math.random() * 100}%`, // Random vertical position
-        backgroundColor: color,
-        filter: 'blur(2px)', // Blur effect for twinkling stars
-      }}
+      className="absolute w-1 h-1 bg-white rounded-full"
+      style={{ boxShadow: "0 0 4px 2px rgba(255, 255, 255, 0.3)" }}
       animate={controls}
     />
-  );
+  )
 }
 
-// Meteorite Component with animation
-const Meteorite = () => {
-  const controls = useAnimation();
+const FloatingParticle = ({ x, y }: { x: number; y: number }) => (
+  <motion.div
+    className="absolute w-1 h-1 bg-blue-200 rounded-full"
+    style={{ x, y }}
+    animate={{
+      y: [y, y - 50, y],
+      opacity: [0.2, 0.8, 0.2],
+    }}
+    transition={{
+      duration: 10 + Math.random() * 5,
+      repeat: Infinity,
+      repeatType: "reverse",
+    }}
+  />
+)
+
+export default function EnhancedMinimalistSpaceBackground() {
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 })
 
   useEffect(() => {
-    const duration = Math.random() * 2 + 3; // Random duration for each meteorite
-    controls.start({
-      x: ["-100%", "100%"], // Move from left to right
-      y: ["50%", "0%"], // Move diagonally downwards
-      opacity: [1, 0],
-      transition: {
-        duration,
-        ease: "linear",
-        repeat: Infinity,
-      },
-    });
-  }, [controls]);
+    const handleResize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight })
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   return (
-    <motion.div
-      className="absolute rounded-full bg-gray-300"
-      style={{
-        width: `${Math.random() * 5 + 2}px`, // Random size for meteorites
-        height: '2px', // Fixed height for meteorite streak
-        filter: 'blur(1px)',
-      }}
-      animate={controls}
-    />
-  );
-}
-
-export default function PortfolioBackground() {
-  const ref = useRef(null);
-  const isInView = useInView(ref);
-
-  return (
-    <div className="fixed inset-0 overflow-hidden bg-black" ref={ref}>
-      {/* Dark space background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black to-gray-800" />
-
-      {/* Glowing stars */}
+    <div className="fixed inset-0 overflow-hidden bg-gradient-to-b from-gray-900 to-black">
+      {/* Sparse stars */}
       {Array.from({ length: 50 }).map((_, index) => (
-        <Star key={index} index={index} />
+        <Star
+          key={index}
+          x={Math.random() * windowSize.width}
+          y={Math.random() * windowSize.height}
+          size={Math.random() * 2 + 1}
+        />
       ))}
 
-      {/* Meteorites */}
-      {Array.from({ length: 10 }).map((_, index) => (
-        <Meteorite key={index} />
+      {/* Constellations */}
+      <Constellation />
+
+      {/* Shooting stars */}
+      {Array.from({ length: 3 }).map((_, index) => (
+        <ShootingStar key={index} />
       ))}
 
-      {/* Animated glow to simulate nebulas */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-radial from-purple-500/20 via-blue-500/20 to-transparent"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isInView ? 0.3 : 0 }}
-        transition={{ duration: 5, repeat: Infinity, repeatType: "reverse" }}
-      />
+      {/* Floating particles */}
+      {Array.from({ length: 20 }).map((_, index) => (
+        <FloatingParticle
+          key={index}
+          x={Math.random() * windowSize.width}
+          y={Math.random() * windowSize.height}
+        />
+      ))}
 
-      {/* Floating nebula shapes */}
+      {/* Subtle nebula effect */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-60 h-60 bg-gradient-to-br from-purple-600/30 to-blue-600/30 rounded-full blur-2xl"
+        className="absolute inset-0 bg-gradient-radial from-blue-500/5 via-purple-500/5 to-transparent"
         animate={{
-          scale: [1, 1.2, 1],
-          rotate: [0, 360, 0],
-          opacity: [0.5, 1, 0.5],
+          opacity: [0.3, 0.5, 0.3],
         }}
         transition={{
-          duration: 15,
+          duration: 10,
           repeat: Infinity,
           repeatType: "reverse",
         }}
       />
+
+      {/* Pulsating glow */}
       <motion.div
-        className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-gradient-to-tr from-pink-600/30 to-purple-600/30 rounded-lg blur-2xl"
+        className="absolute inset-0 bg-blue-500/5"
         animate={{
-          scale: [1, 1.3, 1],
-          rotate: [0, -360, 0],
-          opacity: [0.3, 0.8, 0.3],
+          opacity: [0, 0.05, 0],
         }}
         transition={{
-          duration: 20,
+          duration: 5,
           repeat: Infinity,
           repeatType: "reverse",
         }}
       />
     </div>
-  );
+  )
 }
