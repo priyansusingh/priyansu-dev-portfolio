@@ -4,23 +4,19 @@ import React from 'react';
 import { FaLink, FaGithub } from 'react-icons/fa';
 import { SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiPostgresql, SiTailwindcss, SiMongodb, SiExpress, SiNextdotjs } from 'react-icons/si';
 import Image, { StaticImageData } from 'next/image';
-import project1 from '../project1.png';
-import project2 from '../project2.png';
-import project3 from '../project3.png';
-import project4 from '../project4.png';
-import project5 from '../project5.png';
+import project2 from '../../public/project1.png';
+import project1 from '../../public/project2.png';
+import project3 from '../../public/project3.png';
 
-// Define the types for the props
 interface ProjectCardProps {
   title: string;
   description: string;
   image: StaticImageData;
   liveLink: string;
   githubLink: string;
-  techStack: JSX.Element[]; // Array of tech stack icons
+  techStack: JSX.Element[]; 
 }
 
-// ProjectCard Component
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, liveLink, githubLink, techStack }) => {
   return (
     <div className="w-80 bg-white bg-opacity-10 border border-gray-700 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
@@ -48,7 +44,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, li
   );
 };
 
-// ProjectSection Component
+
 export default function ProjectSection() {
   const projects = [
     {
@@ -74,22 +70,6 @@ export default function ProjectSection() {
       liveLink: "https://payments-app-iota.vercel.app/",
       githubLink: "https://github.com/priyansusingh/payments-application",
       techStack: [<SiJavascript key="js" />, <SiReact key="react" />, <SiNodedotjs key="node" />, <SiMongodb key="mongo"/>, <SiExpress key="express"/>],
-    },
-    {
-      title: "Fantune",
-      description: "It is a SaaS music streaming platform where you can choose your favorite stream.",
-      image: project4,
-      liveLink: "https://saas-app-zeta.vercel.app/",
-      githubLink: "https://github.com/priyansusingh/Fantune",
-      techStack: [<SiTypescript key="ts" />, <SiNextdotjs key="nextjs"/> ,<SiReact key="react" />, <SiPostgresql key="postgres" />],
-    },
-    {
-      title: "Agrilink",
-      description: "It is a contract-based farming website made during Smart India Hackathon 2024. It was teamwork.",
-      image: project5,
-      liveLink: "https://agri-link-farming.vercel.app/",
-      githubLink: "https://github.com/Coderich-Community/AgriLink",
-      techStack: [<SiJavascript key="js" />, <SiReact key="react" />, <SiExpress key="express" />,<SiTailwindcss key="tailwind" />],
     },
   ];
 

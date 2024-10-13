@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import avatar from '../avatar.jpg'
+import avatar from '../../public/avatar.jpg'
 
 export default function HeroSection() {
   return (
@@ -40,7 +40,6 @@ export default function HeroSection() {
             />
           </div>
           
-          {/* Social Icons Below Avatar */}
           <div className="flex justify-center mt-8 space-x-8">
             <a href="https://github.com/priyansusingh" target="_blank" rel="noopener noreferrer" className="text-indigo-500 hover:text-indigo-700 transition">
               <FontAwesomeIcon icon={faGithub} size="2x" />
@@ -95,7 +94,6 @@ export default function HeroSection() {
             Crafting elegant solutions with code
           </motion.p>
           
-          {/* About Me Card */}
           <motion.div
             className="bg-gray-800 bg-opacity-30 backdrop-filter backdrop-blur-sm rounded-lg p-8 shadow-lg border border-gray-700"
             initial={{ opacity: 0, y: 20 }}
@@ -104,11 +102,9 @@ export default function HeroSection() {
           >
             <h2 className="text-2xl font-bold mb-4 text-indigo-400">About Me</h2>
             <p className="text-gray-300 leading-relaxed">
-            I am a passionate and dedicated 3rd-year B.Tech Computer Science Engineering student with over a year of experience as a full-stack
-            web developer. My expertise spans both front-end and back-end technologies, enabling me to build robust and efficient web
-            applications. I am also a DevOps enthusiast, constantly seeking to improve deployment processes and system reliability. With a strong
-            commitment to learning and staying current with industry trends, I thrive in dynamic environments where I can contribute to
-            innovative projects and collaborate with like-minded individuals.
+            I’m a 3rd-year B.Tech CSE student and full-stack web developer with a passion for DevOps. 
+            With over a year of experience, I build efficient web apps and continuously seek to improve deployment processes. 
+            I thrive on learning and contributing to innovative projects.
             </p>
           </motion.div>
         </div>
