@@ -4,8 +4,8 @@ import React from 'react';
 import { FaLink, FaGithub } from 'react-icons/fa';
 import { SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiPostgresql, SiTailwindcss, SiMongodb, SiExpress, SiNextdotjs } from 'react-icons/si';
 import Image, { StaticImageData } from 'next/image';
-import project2 from '../../public/project1.png';
-import project1 from '../../public/project2.png';
+import project1 from '../../public/project1.png';
+import project2 from '../../public/project2.png';
 import project3 from '../../public/project3.png';
 
 interface ProjectCardProps {
