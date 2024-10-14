@@ -5,7 +5,6 @@ import { FaReact, FaNodeJs, FaDatabase, FaHtml5, FaCss3Alt, FaDocker, FaGithub, 
 import { SiJavascript, SiTypescript, SiTailwindcss, SiPostgresql, SiPrisma, SiNextdotjs, SiExpress, SiLinux, SiGit } from 'react-icons/si';
 
 const skills = [
-  // Programming Languages
   { name: 'TypeScript', icon: <SiTypescript className="text-2xl text-blue-600" /> },
   { name: 'JavaScript', icon: <SiJavascript className="text-2xl text-yellow-500" /> },
   { name: 'Next.js', icon: <SiNextdotjs className="text-2xl text-white" /> },
@@ -13,17 +12,11 @@ const skills = [
   { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-2xl text-sky-400" /> },
   { name: 'Java', icon: <FaCode className="text-2xl text-blue-600" /> },
   { name: 'C++', icon: <FaCode className="text-2xl text-blue-600" /> },
-  
-  // Frameworks
-
-  // Backend and Databases
   { name: 'Node.js', icon: <FaNodeJs className="text-2xl text-green-500" /> },
   { name: 'Express.js', icon: <SiExpress className="text-2xl text-white" /> },
   { name: 'PostgreSQL', icon: <SiPostgresql className="text-2xl text-blue-700" /> },
   { name: 'Prisma', icon: <SiPrisma className="text-2xl text-purple-500" /> },
   { name: 'MongoDB', icon: <FaDatabase className="text-2xl text-green-500" /> },
-
-  // Other Technologies
   { name: 'Linux', icon: <SiLinux className="text-2xl text-yellow-500" /> },
   { name: 'Git', icon: <SiGit className="text-2xl text-orange-500" /> },
   { name: 'Docker', icon: <FaDocker className="text-2xl text-blue-600" /> },
@@ -37,11 +30,11 @@ export default function SkillsSection() {
   return (
     <section id="skills" className="px-4 pt-5 pb-10 text-white">
       <h2 className="text-4xl text-center mb-10 text-teal-300">My Skills</h2>
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 justify-items-center">
         {skills.map((skill, index) => (
-          <div key={index} className="flex flex-col items-center p-4 bg-gray-800 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+          <div key={index} className="flex flex-col items-center p-4 bg-gray-800 rounded-lg shadow-lg transition-transform transform hover:scale-105 w-24">
             {skill.icon}
-            <span className="mt-2 text-lg text-center">{skill.name}</span>
+            <span className="mt-2 text-sm text-center">{skill.name}</span>
           </div>
         ))}
       </div>
