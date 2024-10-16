@@ -2,11 +2,13 @@
 
 import React from 'react'
 import { FaLink, FaGithub } from 'react-icons/fa'
-import { SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiPostgresql, SiTailwindcss, SiMongodb, SiExpress, SiNextdotjs } from 'react-icons/si'
+import { SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiPostgresql, SiTailwindcss, SiMongodb, SiExpress, SiNextdotjs, SiDrizzle, SiClerk, SiStripe } from 'react-icons/si'
 import Image, { StaticImageData } from 'next/image'
-import project1 from '../../public/project1.png'
-import project2 from '../../public/project2.png'
-import project3 from '../../public/project3.png'
+import postgenix from '../../public/postgenix.png'
+import writely from '../../public/writely.png'
+import portfolio from '../../public/portfolio.png'
+import payment from '../../public/payment.png'
+
 
 interface ProjectCardProps {
   title: string
@@ -54,9 +56,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, li
 export default function ProjectSection() {
   const projects = [
     {
+      title: "PostgeniX AI",
+      description: "An AI powered social media content generator app",
+      image: postgenix,
+      liveLink: "https://postgenix-ai.vercel.app/",
+      githubLink: "https://github.com/priyansusingh/postgenix-ai",
+      techStack: [<SiTypescript key="js" />, <SiNextdotjs key="nextjs" />, <SiTailwindcss key="tailwind" />, <SiPostgresql key="postgres" />, <SiDrizzle key="drizzle"/>, <SiClerk key="clerk"/>, <SiStripe key="stripe"/>],
+    },
+    {
       title: "Writely",
       description: "A blogging platform for users to create and read blogs.",
-      image: project1,
+      image: writely,
       liveLink: "https://writely-one.vercel.app/",
       githubLink: "https://github.com/priyansusingh/Writely",
       techStack: [<SiTypescript key="js" />, <SiReact key="react" />, <SiTailwindcss key="tailwind" />, <SiPostgresql key="postgres" />],
@@ -64,7 +74,7 @@ export default function ProjectSection() {
     {
       title: "Portfolio Website",
       description: "An app designed to showcase my skills and work.",
-      image: project3,
+      image: portfolio,
       liveLink: "https://priyansu-dev.vercel.app/",
       githubLink: "https://github.com/priyansusingh/priyansu-dev-portfolio",
       techStack: [<SiTypescript key="ts" />, <SiNextdotjs key="nextjs" />, <SiReact key="react" />, <SiTailwindcss key="tailwind" />],
@@ -72,7 +82,7 @@ export default function ProjectSection() {
     {
       title: "Payment Application",
       description: "An app designed for efficient payment management and processing.",
-      image: project2,
+      image: payment,
       liveLink: "https://payments-app-iota.vercel.app/",
       githubLink: "https://github.com/priyansusingh/payments-application",
       techStack: [<SiJavascript key="js" />, <SiReact key="react" />, <SiNodedotjs key="node" />, <SiMongodb key="mongo" />, <SiExpress key="express" />],
