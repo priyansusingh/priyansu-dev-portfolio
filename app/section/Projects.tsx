@@ -2,12 +2,11 @@
 
 import React from 'react'
 import { FaLink, FaGithub } from 'react-icons/fa'
-import { SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiPostgresql, SiTailwindcss, SiMongodb, SiExpress, SiNextdotjs, SiDrizzle, SiClerk, SiStripe } from 'react-icons/si'
+import { SiTypescript, SiReact, SiPostgresql, SiTailwindcss, SiNextdotjs, SiDrizzle, SiClerk, SiStripe } from 'react-icons/si'
 import Image, { StaticImageData } from 'next/image'
 import postgenix from '../../public/postgenix.png'
 import writely from '../../public/writely.png'
 import portfolio from '../../public/portfolio.png'
-import payment from '../../public/payment.png'
 
 
 interface ProjectCardProps {
@@ -78,15 +77,7 @@ export default function ProjectSection() {
       liveLink: "https://priyansu-dev.vercel.app/",
       githubLink: "https://github.com/priyansusingh/priyansu-dev-portfolio",
       techStack: [<SiTypescript key="ts" />, <SiNextdotjs key="nextjs" />, <SiReact key="react" />, <SiTailwindcss key="tailwind" />],
-    },
-    {
-      title: "Payment Application",
-      description: "An app designed for efficient payment management and processing.",
-      image: payment,
-      liveLink: "https://payments-app-iota.vercel.app/",
-      githubLink: "https://github.com/priyansusingh/payments-application",
-      techStack: [<SiJavascript key="js" />, <SiReact key="react" />, <SiNodedotjs key="node" />, <SiMongodb key="mongo" />, <SiExpress key="express" />],
-    },
+    }
   ]
 
   return (
