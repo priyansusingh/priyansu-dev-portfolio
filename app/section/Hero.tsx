@@ -102,7 +102,7 @@ export default function HeroSection() {
           >
             <h2 className="text-2xl font-bold mb-4 text-indigo-400">About Me</h2>
             <p className="text-gray-300 leading-relaxed">
-            I’m a 3rd-year B.Tech CSE student and full-stack web developer with a passion for DevOps. 
+            I’m a final year B.Tech CSE student and full-stack web developer with a passion for DevOps. 
             With over a year of experience, I build efficient web apps and continuously seek to improve deployment processes. 
             I thrive on learning and contributing to innovative projects.
             </p>
