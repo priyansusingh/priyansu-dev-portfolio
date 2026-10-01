@@ -1,188 +1,135 @@
-"use client"
+"use client";
 
-import React, { useEffect, useState } from 'react'
-import { motion, useAnimation } from 'framer-motion'
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
-const Star = ({ x, y, size }: { x: number; y: number; size: number }) => (
-  <motion.div
-    className="absolute rounded-full bg-white"
-    style={{ x, y, width: size, height: size }}
-    animate={{
-      opacity: [0.2, 1, 0.2],
-      scale: [1, 1.2, 1],
-    }}
-    transition={{
-      duration: 3 + Math.random() * 2,
-      repeat: Infinity,
-      repeatType: "reverse",
-    }}
-  />
-)
-
-const Constellation = () => {
-  const points = [
-    { x: 50, y: 50 },
-    { x: 100, y: 100 },
-    { x: 150, y: 75 },
-    { x: 200, y: 150 },
-    { x: 250, y: 50 },
-  ]
-
-  return (
-    <motion.svg
-      className="absolute inset-0 w-full h-full"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 2 }}
-    >
-      {points.map((point, index) => (
-        <motion.circle
-          key={index}
-          cx={point.x}
-          cy={point.y}
-          r="2"
-          fill="white"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0.2, 1, 0.2] }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            repeatType: "reverse",
-            delay: index * 0.5,
-          }}
-        />
-      ))}
-      {points.slice(0, -1).map((point, index) => (
-        <motion.line
-          key={index}
-          x1={point.x}
-          y1={point.y}
-          x2={points[index + 1].x}
-          y2={points[index + 1].y}
-          stroke="white"
-          strokeWidth="0.5"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: [0, 1, 0] }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            repeatType: "reverse",
-            delay: index * 1,
-          }}
-        />
-      ))}
-    </motion.svg>
-  )
-}
-
-const ShootingStar = () => {
-  const controls = useAnimation()
+export default function PortfolioBackground() {
+  const [mounted, setMounted] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: -500, y: -500 });
 
   useEffect(() => {
-    const animate = async () => {
-      await controls.start({
-        x: ["0%", "100%"],
-        y: ["0%", "100%"],
-        opacity: [0, 1, 0],
-        transition: { duration: 1, ease: "easeInOut" },
-      })
-      controls.set({ x: "0%", y: "0%" })
-      setTimeout(animate, Math.random() * 10000 + 5000)
-    }
-    animate()
-  }, [controls])
+    setMounted(true);
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   return (
-    <motion.div
-      className="absolute w-1 h-1 bg-white rounded-full"
-      style={{ boxShadow: "0 0 4px 2px rgba(255, 255, 255, 0.3)" }}
-      animate={controls}
-    />
-  )
-}
-
-const FloatingParticle = ({ x, y }: { x: number; y: number }) => (
-  <motion.div
-    className="absolute w-1 h-1 bg-blue-200 rounded-full"
-    style={{ x, y }}
-    animate={{
-      y: [y, y - 50, y],
-      opacity: [0.2, 0.8, 0.2],
-    }}
-    transition={{
-      duration: 10 + Math.random() * 5,
-      repeat: Infinity,
-      repeatType: "reverse",
-    }}
-  />
-)
-
-export default function EnhancedMinimalistSpaceBackground() {
-  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 })
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({ width: window.innerWidth, height: window.innerHeight })
-    }
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
-
-  return (
-    <div className="fixed inset-0 overflow-hidden bg-gradient-to-b from-gray-900 to-black">
-      {/* Sparse stars */}
-      {Array.from({ length: 50 }).map((_, index) => (
-        <Star
-          key={index}
-          x={Math.random() * windowSize.width}
-          y={Math.random() * windowSize.height}
-          size={Math.random() * 2 + 1}
-        />
-      ))}
-
-      {/* Constellations */}
-      <Constellation />
-
-      {/* Shooting stars */}
-      {Array.from({ length: 3 }).map((_, index) => (
-        <ShootingStar key={index} />
-      ))}
-
-      {/* Floating particles */}
-      {Array.from({ length: 20 }).map((_, index) => (
-        <FloatingParticle
-          key={index}
-          x={Math.random() * windowSize.width}
-          y={Math.random() * windowSize.height}
-        />
-      ))}
-
-      {/* Subtle nebula effect */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-radial from-blue-500/5 via-purple-500/5 to-transparent"
-        animate={{
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          repeatType: "reverse",
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0 bg-[#08090e]">
+      {/* Subtle Grid overlay with radial mask */}
+      <div 
+        className="absolute inset-0 bg-grid-pattern opacity-60"
+        style={{
+          maskImage: "radial-gradient(ellipse at center, black 40%, transparent 85%)",
+          WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 85%)",
         }}
       />
 
-      {/* Pulsating glow */}
+      {/* Dynamic Mouse Spotlight */}
+      {mounted && (
+        <div
+          className="absolute w-[600px] h-[600px] rounded-full blur-[140px] opacity-25 transition-transform duration-300 ease-out pointer-events-none"
+          style={{
+            transform: `translate(${mousePos.x - 300}px, ${mousePos.y - 300}px)`,
+            background: "radial-gradient(circle, rgba(99, 102, 241, 0.45) 0%, rgba(139, 92, 246, 0.15) 50%, transparent 70%)",
+          }}
+        />
+      )}
+
+      {/* Ambient Gradient Orbs */}
       <motion.div
-        className="absolute inset-0 bg-blue-500/5"
+        className="absolute -top-32 -left-32 w-[550px] h-[550px] bg-indigo-600/15 rounded-full blur-[130px]"
         animate={{
-          opacity: [0, 0.05, 0],
+          scale: [1, 1.15, 1],
+          x: [0, 30, 0],
+          y: [0, 40, 0],
         }}
         transition={{
-          duration: 5,
+          duration: 12,
           repeat: Infinity,
-          repeatType: "reverse",
+          ease: "easeInOut",
         }}
       />
+
+      <motion.div
+        className="absolute top-1/3 -right-40 w-[600px] h-[600px] bg-purple-600/12 rounded-full blur-[150px]"
+        animate={{
+          scale: [1, 1.2, 1],
+          x: [0, -40, 0],
+          y: [0, 30, 0],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2,
+        }}
+      />
+
+      <motion.div
+        className="absolute -bottom-32 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[140px]"
+        animate={{
+          scale: [1, 1.1, 1],
+          x: [0, 20, 0],
+          y: [0, -20, 0],
+        }}
+        transition={{
+          duration: 14,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 4,
+        }}
+      />
+
+      {/* Constellation & Star Points */}
+      <svg className="absolute inset-0 w-full h-full opacity-35">
+        <defs>
+          <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+            <stop offset="100%" stopColor="#818cf8" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        {/* Fixed subtle stars for stability and zero layout shift */}
+        {[
+          { x: "12%", y: "15%", r: 1.2, delay: 0 },
+          { x: "28%", y: "8%", r: 1.5, delay: 1.5 },
+          { x: "45%", y: "22%", r: 1, delay: 2 },
+          { x: "65%", y: "12%", r: 1.4, delay: 0.8 },
+          { x: "82%", y: "19%", r: 1.8, delay: 2.5 },
+          { x: "92%", y: "35%", r: 1.2, delay: 1.2 },
+          { x: "18%", y: "45%", r: 1.5, delay: 3 },
+          { x: "38%", y: "55%", r: 1, delay: 1.7 },
+          { x: "72%", y: "50%", r: 1.6, delay: 2.2 },
+          { x: "88%", y: "68%", r: 1.3, delay: 0.5 },
+          { x: "15%", y: "78%", r: 1.7, delay: 2.8 },
+          { x: "32%", y: "88%", r: 1.2, delay: 1.1 },
+          { x: "55%", y: "75%", r: 1.5, delay: 0.3 },
+          { x: "78%", y: "85%", r: 1.4, delay: 2.1 },
+        ].map((star, idx) => (
+          <circle
+            key={idx}
+            cx={star.x}
+            cy={star.y}
+            r={star.r}
+            fill="url(#starGlow)"
+            className="animate-pulse"
+            style={{ animationDuration: `${3 + (idx % 4)}s`, animationDelay: `${star.delay}s` }}
+          />
+        ))}
+
+        {/* Constellation lines */}
+        <line x1="12%" y1="15%" x2="28%" y2="8%" stroke="rgba(255,255,255,0.08)" strokeWidth="0.75" />
+        <line x1="28%" y1="8%" x2="45%" y2="22%" stroke="rgba(255,255,255,0.06)" strokeWidth="0.75" />
+        <line x1="65%" y1="12%" x2="82%" y2="19%" stroke="rgba(255,255,255,0.08)" strokeWidth="0.75" />
+        <line x1="72%" y1="50%" x2="88%" y2="68%" stroke="rgba(255,255,255,0.06)" strokeWidth="0.75" />
+        <line x1="18%" y1="45%" x2="38%" y2="55%" stroke="rgba(255,255,255,0.05)" strokeWidth="0.75" />
+      </svg>
+
+      {/* Shooting star accents */}
+      <div className="absolute top-12 left-1/4 w-[120px] h-[1px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent rotate-[-25deg] opacity-0 animate-[shimmer_8s_ease-in-out_infinite]" />
+      <div className="absolute top-1/2 right-1/4 w-[150px] h-[1px] bg-gradient-to-r from-transparent via-purple-400 to-transparent rotate-[-25deg] opacity-0 animate-[shimmer_12s_ease-in-out_infinite_4s]" />
     </div>
-  )
+  );
 }

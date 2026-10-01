@@ -1,26 +1,32 @@
+"use client";
+
+import React from "react";
 import PortfolioBackground from "../components/PortfolioBackground";
-import Footer from "../section/Footer";
-import HeroSection from "../section/Hero";
 import Navbar from "../section/Navbar";
-import ProjectSection from "../section/Projects";
+import HeroSection from "../section/Hero";
+import AboutSection from "../section/About";
 import SkillsSection from "../section/Skills";
+import ProjectSection from "../section/Projects";
+import ContactSection from "../section/Contact";
+import FooterSection from "../section/Footer";
 
 export function PortfolioLayout() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen selection:bg-indigo-500/30 selection:text-indigo-200">
+      {/* Dynamic ambient cosmos background */}
       <PortfolioBackground />
+
+      {/* Main Content Layer */}
       <div className="relative z-10">
         <Navbar />
-        <HeroSection />
-        <section id="skills" className="py-20"> {/* Skills Section */}
+        <main>
+          <HeroSection />
+          <AboutSection />
           <SkillsSection />
-        </section>
-        <section id="projects" className="py-20"> {/* Projects Section */}
           <ProjectSection />
-        </section>
-        <section>
-          <Footer/>
-        </section>
+          <ContactSection />
+        </main>
+        <FooterSection />
       </div>
     </div>
   );
